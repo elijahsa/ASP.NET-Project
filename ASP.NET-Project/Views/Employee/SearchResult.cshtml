@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div>
+        <ul>
+            <li>Hello  @Session["FullName"]</li>
+            <li>@Html.ActionLink("Home", "Home", "Login")</li>
+            <li>Number of Action: @Session["ActionCounter"] </li>
+            <li>@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+        </ul>
+    </div>
+    <div>
+        <h2>Search Result</h2>
+        <table border="1">
+            <thead>
+                <tr><th>Full Name</th><th>Department</th><th>Start Year</th><th>Shifts</th></tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in ViewBag.EmpData)
+                {
+                    <tr>
+
+                        <td>@item.FullName </td>
+                        <td>@item.Department </td>
+                        <td>@item.StartWorkYear </td>
+                        <td>
+                            <ul>
+                                @foreach (var element in item.Shifts)
+                                {
+                                    <li>Date:@element.ShiftDate Start: @element.StartTime End:@element.EndTime    </li>
+                                }
+                            </ul>
+                        </td>
+                        <td>@Html.ActionLink("Edit", "GetDataEditEmp", new { id = item.ID })</td>
+                        <td>@Html.ActionLink("Delete", "DelEmp", new { id = item.ID })</td>
+                        <td>@Html.ActionLink("Add Shift", "AddShiftToEmployee", new { id = item.ID })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <input type="button" value="Back" onclick="location.href='@Url.Action("EmployeeMenu", "Employee" )'" />
+    </div>
+
+</body>
+</html>

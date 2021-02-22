@@ -1,0 +1,72 @@
+﻿@model ASP.NET_Project.Models.department
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script>
+        function change()
+        {
+            var idbox = document.getElementById('ManagerID');
+            var drop = document.getElementById('drop');
+            idbox.value = drop.value;
+        }
+    </script>
+
+</head>
+<body>
+    <div>
+        <ul>
+            <li>Hello  @Session["FullName"]</li>
+            <li>@Html.ActionLink("Home", "Home", "Login")</li>
+            <li>Number of Action: @Session["ActionCounter"] </li>
+            <li>@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+        </ul>
+    </div>
+
+
+
+
+    <div>
+        <div>
+            <div>
+                <h2>Edit Depatment</h2>
+                @using (Html.BeginForm("UpdateDep", "Department", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <div>
+                        <label>Depatment ID</label>
+                        @Html.TextBoxFor(x => x.ID, new { @class = "form-control", placeholder = "Enter Department Name", disabled = "disabled" })
+                        @Html.HiddenFor(x => x.ID, new { @class = "form-control", placeholder = "Enter Department Name" })
+
+                    </div>
+                    <div>
+                        <label>Depatment Name</label>
+                        @Html.TextBoxFor(x => x.DepName, new { @class = "form-control", placeholder = "Enter Department Name" })
+
+                    </div>
+
+
+                    <div>
+                        <label>Depatment Manager </label>
+                        @Html.DropDownListFor(m => m.Manager, new SelectList(ViewBag.emp, "ID", "FullName"), new { @class = "form-control", placeholder = "Enter Depatment Manager ID", @onchange = "javascript:change()", @id = "drop" })
+                    </div>
+                    <div>
+                        <label>Depatment Manager ID</label>
+                        @Html.TextBoxFor(m => m.Manager, new { @class = "form-control", placeholder = "Select Manager", @id = "ManagerID", disabled = "disabled" })
+                    </div>
+
+
+
+                    <input type="submit" value="Update">
+                }
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

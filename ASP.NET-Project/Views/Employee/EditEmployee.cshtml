@@ -1,0 +1,55 @@
+﻿@model ASP.NET_Project.Models.employees
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div>
+        <ul>
+            <li>Hello  @Session["FullName"]</li>
+            <li>@Html.ActionLink("Home", "Home", "Login")</li>
+            <li>Number of Action: @Session["ActionCounter"] </li>
+            <li>@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+        </ul>
+    </div>
+
+
+
+    <div>
+        <div>
+            <div>
+                <h2>Edit Employee</h2>
+                @using (Html.BeginForm("UpdateEmp", "Employee", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <div>
+                        <label>Employee ID</label>
+                        @Html.TextBoxFor(x => x.ID, new { @class = "form-control", disabled = "disabled" })
+                        @Html.HiddenFor(x => x.ID, new { @class = "form-control" })
+
+                    </div>
+                    <div>
+                        <label>First Name</label>
+                        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", placeholder = "Enter First Name" })
+
+                    </div>
+                    <div>
+                        <label>Last Name</label>
+                        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", placeholder = "Enter Last Name" })
+                    </div>
+                    <div>
+                        <label>Select Department</label><br />
+                        @Html.DropDownListFor(x => x.DepID, new SelectList(ViewBag.Departments, "ID", "DepName"), new { @class = "form-control" })
+                    </div>
+                    <input type="submit" value="Update">
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

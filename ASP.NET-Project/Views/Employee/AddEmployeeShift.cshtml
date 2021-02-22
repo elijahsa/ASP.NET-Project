@@ -1,0 +1,45 @@
+﻿@model ASP.NET_Project.Models.EmployeeShift
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div>
+        <ul>
+            <li>Hello  @Session["FullName"]</li>
+            <li>@Html.ActionLink("Home", "Home", "Login")</li>
+            <li class="LogOut">Number of Action: @Session["ActionCounter"] </li>
+            <li class="LogOut">@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+        </ul>
+    </div>
+
+    <div>
+        <div>
+            <div>
+                <h2>Add Shift</h2>
+                @using (Html.BeginForm("AddShiftEmp", "employee", FormMethod.Post, new { @class = "form - horizontal" }))
+                {
+                    <div>
+                        <label>Employee ID</label>
+                        @Html.TextBoxFor(x => x.EmployeeID, new { @class = "form-control", disabled = "disabled" })
+                        @Html.HiddenFor(x => x.EmployeeID, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        <label>Shift ID</label>
+                        @Html.TextBoxFor(x => x.ShiftID, new { @class = "form-control", placeholder = "Enter Shift ID" })
+                    </div>
+                    <input type="submit" value="Add Shift" />
+                }
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

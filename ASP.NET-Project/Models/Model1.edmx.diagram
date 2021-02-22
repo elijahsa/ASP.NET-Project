@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="33aef96636d04ad795f0c9067c62a3ab" Name="Diagram1">
+        <EntityTypeShape EntityType="factoryDBModel.department" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="factoryDBModel.employees" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="factoryDBModel.EmployeeShift" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="factoryDBModel.shifts" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="factoryDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="factoryDBModel.users" Width="1.5" PointX="2.75" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="factoryDBModel.FK__departmen__Manag__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="factoryDBModel.FK__employees__DepID__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="factoryDBModel.FK__EmployeeS__Emplo__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="factoryDBModel.FK__EmployeeS__Shift__2F10007B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

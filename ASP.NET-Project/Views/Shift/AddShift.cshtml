@@ -1,0 +1,59 @@
+﻿@model ASP.NET_Project.Models.shifts
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <script>
+        function Result() {
+            var SearchTxt = document.getElementById('Search').value;
+            var url = "https://localhost:44377/Employee/SearchEmp/?text=" + SearchTxt;
+            console.log(url)
+            window.location = url;
+        }
+    </script>
+
+</head>
+<body>
+    <div>
+        <ul>
+            <li>Hello  @Session["FullName"]</li>
+            <li>@Html.ActionLink("Home", "Home", "Login")</li>
+            <li>Number of Action: @Session["ActionCounter"] </li>
+            <li>@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+        </ul>
+    </div>
+
+
+    <div>
+        <div>
+            <div>
+                <h2>Add Shift</h2>
+                @using (Html.BeginForm("AddShift", "Shift", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <div>
+                        <label>Shift Date</label>
+                        @Html.TextBoxFor(x => x.ShiftDate, new { @type = "date", @class = "form-control", placeholder = "Enter Shift Date" })
+                    </div>
+                    <div>
+                        <label>Start Time</label>
+                        @Html.TextBoxFor(x => x.StartTime, new { @class = "form-control", placeholder = "Enter Start Time" })
+                    </div>
+                    <div>
+                        <label>End Time</label>
+                        @Html.TextBoxFor(x => x.EndTime, new { @class = "form-control", placeholder = "Enter End Time" })
+                    </div>
+                    <input type="submit" value="Update">
+                }
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
